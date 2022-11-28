@@ -3,4 +3,4 @@
 ## 深度报告
 - [2022 AI4S全球发展观察与展望](https://github.com/Paipipaipi/AI4S/blob/main/2022%20AI4S%E5%85%A8%E7%90%83%E5%8F%91%E5%B1%95%E8%A7%82%E5%AF%9F%E4%B8%8E%E5%B1%95%E6%9C%9B_compressed.pdf)
 ## 研究报告
-- [Pi的研究报告]()
+- [Pi的研究报告](https://github.com/Paipipaipi/AI4S/blob/ea3dcb3963722308fea1f6888ec04bf854129f40/AI4S_Report.md)
