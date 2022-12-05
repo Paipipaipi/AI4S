@@ -112,4 +112,37 @@ AI即人工智能，归根结底就是用程序模拟人类，生物学本就是
 
 ##### 生物组学
 
+以机器学习，深度学习为代表的人工智 能技术在处理大量的数据时具有巨大的 优势，生命科学领域产生了海量并且多 层次的组学数据和实验数据，是人工智 能应用重要的具体场景。 
+围绕从DNA到蛋白质的中心法则，如基 因组，甲基化组，表观基因组，转录组， 翻译组，蛋白质组等多种组学信息，从 不同的角度解释着生命发生发展的规律。 
+面对多组学的数据，如何进行深入分析 和数据整合是一个重要的问题，在进行 算法的尝试和模型的构建中也面临着许 多的问题和挑战
+
 <img width="610" alt="image" src="https://user-images.githubusercontent.com/80620580/205539731-a3e4d39f-f09c-4827-b2d0-144210e2617a.png">
+
+#### 生命科学领域的主要人工智能模型及应用场景
+
+<img width="1091" alt="image" src="https://user-images.githubusercontent.com/80620580/205540920-8f76bf60-e3e8-458a-83a2-a729f1500646.png">
+
+#### 生命科学领域与医疗人工智能结合的前沿热点
+
+<img width="1195" alt="image" src="https://user-images.githubusercontent.com/80620580/205541099-b14648fe-bfb4-4df1-9546-f75141891010.png">
+
+#### 肿瘤精准医疗
+
+<img width="1047" alt="image" src="https://user-images.githubusercontent.com/80620580/205541225-c5e44c86-0d80-4c0b-8385-ff05b6f2602b.png">
+
+<img width="1250" alt="image" src="https://user-images.githubusercontent.com/80620580/205541397-6b8f0faa-1d8f-4bc4-b907-6ba5c921e04d.png">
+
+<img width="1319" alt="image" src="https://user-images.githubusercontent.com/80620580/205541504-616948bd-d2f4-420c-b240-c078738afa79.png">
+
+#### 药物设计研发
+
+<img width="1276" alt="image" src="https://user-images.githubusercontent.com/80620580/205541589-baa5be05-efad-4dd8-93e5-60305b8fd437.png">
+
+##### 例：机器学习的方法预测配体靶点结合的亲和力
+
+通过修改蛋白序列用同源模建和docking的方法来计算其结合力选择亲和力较高的变体。
+亲和力的打分函数选择很关键。
+
+传统的打分函数基于复合物结构，统计力场来确定打分函数，使用的信息量较少。
+
+可以使用机器学习的方法来计算亲和力的打分函数。直接学习靶点和配体之间相互作用的结构特征而不是基于这些特征人为提取的物理化学特性。
