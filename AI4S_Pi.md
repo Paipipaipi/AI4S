@@ -156,7 +156,9 @@ AI即人工智能，归根结底就是用程序模拟人类，生物学本就是
 
 DeepMind（Google旗下）的AlphaFold2在蛋白质结构预测大赛CASP 14中，对大部分蛋白质结构的预测与真实结构只差一个原子的宽度，达到接近冷冻电镜等复杂仪器检测的水平。ESMFold与AlphaFold2和RoseTTAFold对多序列输入的蛋白质结构预测具有相当的准确度。但ESMFold突出优势在于，其计算速度比AlphaFold2快一个数量级，能够在更有效的时间尺度上探索蛋白质的结构空间。
 过去，AlphaFold2和RoseTTAFold在原子分辨率蛋白质结构预测问题上取得了突破性成功，但依赖于使用多序列比对（Multiple Sequence Alignment，简写为MSA）和相似蛋白质结构的模板来实现最优表现。150亿参数大模型，10x倍速度提升。虽然Meta ESMFold精度上没能做到全面“碾压”AlphaFold2，但毕竟“唯快不破”.
-https://pics1.baidu.com/feed/91529822720e0cf3f09a84e3620a4015be09aa14.jpeg@f_auto?token=97bfe840f670c3b363d6e9b0af59d733![image](https://user-images.githubusercontent.com/80620580/205549408-7ef36273-9546-4c5a-9559-7da270abf466.png)
+
+RoseTTAFold、IntFOLD、RaptorX、OmegaFold、D-I-TASSER [相关链接](https://analyticsindiamag.com/new-algorithms-that-harnessed-protein-folding-power-in-2022/)
+
 
 
 
