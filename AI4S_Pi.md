@@ -94,7 +94,7 @@ AI4S 3.0 阶段的关键词是“搜索”，是成熟应用期（2026年及以�
 发现新的科学原理，让 AI 在特定领域内能出产“可解释”的成果，比如麻省理工 Jeffrey C. Grossman 团队通过机器学习揭示氢化纳米晶和非晶硅中 Staebler-Wronski
 效应起源。
 
-## 应用场景
+## 应用场景及技术
 
 ### 生命科学
 
@@ -107,16 +107,56 @@ AI即人工智能，归根结底就是用程序模拟人类，生物学本就是
 
 #### 人工智能模型及应用场景
 
-主要有三个层次技术的更新迭代发展 -> 多组学数据的获取 -> 具体研究和临床问题的解决
+主要有三个层次：技术的更新迭代发展 -> 多组学数据的获取 -> 具体研究和临床问题的解决
 <img width="1288" alt="image" src="https://user-images.githubusercontent.com/80620580/205539417-216c46a5-41ce-4a0f-a877-c4fbd5a65732.png">
 
 ##### 生物组学
 
-以机器学习，深度学习为代表的人工智 能技术在处理大量的数据时具有巨大的 优势，生命科学领域产生了海量并且多 层次的组学数据和实验数据，是人工智 能应用重要的具体场景。 
-围绕从DNA到蛋白质的中心法则，如基 因组，甲基化组，表观基因组，转录组， 翻译组，蛋白质组等多种组学信息，从 不同的角度解释着生命发生发展的规律。 
-面对多组学的数据，如何进行深入分析 和数据整合是一个重要的问题，在进行 算法的尝试和模型的构建中也面临着许 多的问题和挑战
+随着高通量组学平台的发展，生物医学研究大多采取了多组学技术结合的方法，不同组学来源（如遗传学、蛋白质组学和代谢组学）的数据可以通过基于机器学习（Machine Learning，ML）的预测算法进行整合，以揭示系统生物学的复杂工作。ML提供了整合和分析各种组学数据的新技术，从而发现新的生物标记物。ML中的两种主要学习策略，即有监督和无监督，这两种策略通常在多组学整合的背景下使用。
+
 
 <img width="610" alt="image" src="https://user-images.githubusercontent.com/80620580/205539731-a3e4d39f-f09c-4827-b2d0-144210e2617a.png">
+
+- 基于串联的整合方法
+
+基于串联的整合方法考虑使用联合数据矩阵来开发模型，该联合数据矩阵是通过组合多组学数据集形成的。如上图基于串联的整合方法的一般流程为：阶段1包括来自单独组学（例如基因组学、蛋白质组学和代谢组学）的原始数据以及相应的表型信息。通常基于串联的整合不需要任何预处理，因此没有阶段2。在第3阶段，将来自各个组学的数据连接起来，形成多组学数据的单个大型矩阵。最后，在第4阶段，联合矩阵用于监督或非监督分析。使用基于串联的方法的主要优点是，一旦完成所有单个组学的串联，就可以简单地使用ML分析连续或分类数据。这些方法平等地使用所有连接的特征，并且可以为给定表型选择最具辨别力的特征。
+
+不同的基于串联的监督学习方法已被用于表型预测。串联的多组学数据（以联合矩阵的形式）作为不同经典ML方法的输入，如DT（decision  tree）、NB（naive Bayes）、ANN（artificial neural networks）、SVM（support vector  machine）、KNN（k-nearest neighbors）、RF（random forest）和k-Star。例如，多组学特征（包括基因表达、拷贝数变异和突变）的联合矩阵与经典RF和SVM一起用于预测抗癌药物反应。同样，多变量的LASSO模型也被研究过。此外，Boosted trees和SVR（support vector regression）也被用于寻找血糖健康的纵向预测因素。除了经典的ML算法外，深度神经网络也被广泛用于分析串联的多组分数据。
+
+各种基于串联的无监督方法已用于聚类和关联分析。近年来基于矩阵分解的方法已经发展起来，联合NMF（non-negative  matrix factorisation）被提出来整合具有非负值的多组学数据。iCluster框架使用了类似于NMF的原理，但允许集成具有负值的数据集。iCluster+框架提供了对iCluster框架的重大改进，iCluster+ 框架可以以发现模式并结合一系列具有二元、分类和连续值的组学，并通过结合来自结肠直肠癌数据集的基因组数据得到证明。NMF的另一个适应性被评估为JIVE（Joint and Individual Variation Explained），它捕获了集成数据类型之间的联合变化和每种数据类型的结构变化以及残余噪声。MoCluster使用多区块多变量分析来突出不同输入组学数据的模式，然后找到其中的联合聚类。MoCluster通过整合蛋白质组学和转录组学数据进行验证，与Cluster和iCluster+相比，MoCluster显示出明显更高的聚类精度和更低的计算成本。LRAcluster被开发用于整合高维多组学数据。此外，还有最近提出的iClusterBayes，一种完全贝叶斯潜变量模型。它克服了iCluster+在统计推断和计算速度方面的局限性。
+
+- 基于模型的整合方法
+基于模型的整合方法为不同的组学数据创建多个中间模型，然后从各种中间模型构建最终模型。如上图基于模型的整合方法的一般流程为：第1阶段建立单独组的原始数据以及相应的表型信息。在第2阶段，为每个组学开发单独的模型，这些模型随后在第3阶段集成到联合模型中。在第4阶段中，对关节模型进行分析。基于模型的集成方法的主要优点是，它们可以用于合并基于不同组学类型的模型，其中每个模型是从具有相同疾病信息的不同患者组开发的。
+
+基于模型的监督学习方法包括用于开发模型的各种框架，如多数投票算法（majority-based voting）、分层分类器（hierarchical classifiers）、基于集成的方法如XGBoost 和KNN。基于模型的监督学习也采用了深度学习方法，例如MOLI、DFNForest框架、Chaudhary等。ATHENA（Analysis Tool for Heritable and Environmental Network Associations）被开发用于分析多组学数据，其使用grammatical evolution neural networks以及Biofilter和Random Jungl来研究不同的分类和定量变量，并开发预测模型。最近，还开发了用于泛癌分析的MOSAE。
+
+目前已经实现了各种基于模型的无监督学习方法。PSDF (Patient-Specific Data Fusion)是一种非参数贝叶斯模型，通过结合基因表达和拷贝数变异数据对预测癌症亚型进行聚类。类似地，CONEXIC还使用BN整合肿瘤样本的基因表达和拷贝数变化，以识别驱动突变。另一方面，诸如 FCA（(Formal Concept Analysis）共识聚类、MDI（Multiple Dataset Integration）、PINS（Perturbation clustering for data integration and  disease subtyping）、PINS+ 和 BCC（Bayesian consensus clustering）等聚类方法更加灵活，允许后期的聚类整合。不同的基于网络的方法也可用于关联分析，例如Lemon Tree和SNF(Similarity Network Fusion)等。
+
+- 基于转换的整合方法
+基于转换的整合方法首先将每个组学数据集转换为图形或核矩阵，然后在构建模型之前将所有数据集合并为一个。如上图基于转换的整合方法的一般流程为：第1阶段建立单独组的原始数据以及相应的表型信息。在第2阶段，为每个组学开发单独的转换（以图形或内核关系的形式），这些转换随后在第3阶段集成到联合转换中。最后，在第4阶段对其进行分析。基于转换的整合方法的主要优点是，如果唯一信息（例如患者 ID）可用，它们可用于组合广泛的组学研究。
+
+之前提出的基于转换的监督学习方法大多数是基于内核和基于图的算法，其中基于内核的算法有SDP-SVM (Semi-Definite Programming SVM)、FSMKL (Multiple Kernel Learning with Feature Selection)、RVM (Relevance Vector Machine)和Ada-boost RVM等。此外，fMKL-DR (fast multiple kernel learning for dimensionality reduction)已与SVM一起用于基因表达、miRNA表达和DNA甲基化数据。基于图的算法有SSL(semi-supervised learning )、graph sharpening、composite  network和BN等。总体而言，从文献中可以明显看出，基于内核的算法比基于图的方法具有更好的性能。最近，引入了MORONET(Multi-Omics gRaph cOnvolutional NETworks) ，它利用组学特征和患者之间的关联使用图卷积网络来获得更好的分类结果。
+
+基于转换的无监督方法，例如rMKL LPP(regularised multiple kernel learning for Locality Preserving  Projections)被用于聚类分析。类似地，PAMOGK也是利用图核、SmSPK(smoothed shortest path graph kernel)将多组学数据与通路整合起来。Meta-SVM (Meta-analytic SVM)整合了多种组学数据，能够检测与乳腺癌和特发性肺纤维化等疾病相关的一致基因。最近，NEMO(NEighborhood based Multi-Omics clustering)被引入，使用基于患者间相似性矩阵的距离度量来单独评估输入组学数据集。然后将这些组学矩阵组合成一个矩阵，使用基于光谱的聚类进行分析。
+
+##### 组学前沿研究团队
+大多数多组学研究集中于不同形式的癌症。特别是与乳腺癌和卵巢癌相关的多组学研究突出了科学界在这些领域的研究重点。许多组学内部研究已经成功地探索了基因表达和DNA甲基化的整合。LASSO的方法已分别应用于急性髓系白血病和乳腺癌，也被用于癌症预后。同样，分别使用Neural Fuzzy Network对结直肠癌、SVM对胰腺癌和RF对心脏组织老化和卵巢癌进行mRNA–miRNA整合研究。SVM还通过整合不同的转录组学（即mRNA、miRNA和IncRNA），用于口腔鳞状细胞癌的研究。代谢组学和蛋白质组学已使用RF进行整合，用于分析前列腺癌和甲状腺功能。同样，代谢组学与mRNA相结合，用于研究溃疡性结肠炎和癌症存活率。另一方面，糖组学和表观基因组学仅在多组学环境中出现过一次（连同mRNA和代谢组学），相关研究使用RF的图形变体研究与年龄相关的合并症。最近，代谢组学和蛋白质组学也与脂质组学相结合，使用PLS-DA和Extra Trees来评估COVID-19患者。在植物（马铃薯）和动物（如犬心脏病）中也成功地进行了多组学研究。总的来说，最近不同的多组学研究强调了整合方法在理解不同疾病的复杂性和从大量生成的多组学数据中发现潜在异常方面的优势。
+
+- 国外宏蛋白质组学：
+
+加拿大渥太华大学Daniel Figeys课题组。在上星期的HUPO人类蛋白质组学大会上，Dr. Figeys发布了面向非营利机构免费的在线宏蛋白质组学云平台 iMetaLab，链接是 iMetaLab.ca。只要输入质谱分析的原始数据，即可在线（或者下载单机版）进行搜库，得到蛋白质鉴定、定量和生物分类学信息。并且结合在线数据分析的云平台，可获得功能注释、富集分析、以及多种数据可视化分析，生成可以发表论文的图片。因此是适合宏蛋白质组学研究的一站式在线工具。
+
+鹏城实验室正在开展建设的鹏城·扁鹊大模型通过依托鹏城云脑大装置构建横跨基因和表型的多模态知识图谱、预训练模型和高精度生理生化仿真模型等，通过对人体生命组学大数据进行数据感知融合分析建模，最终服务生命健康领域的基础研究和推动健康医疗。
+
+新出模型：ESMFold [论文链接](https://doi.org/10.1101/2022.07.20.500902)
+
+从氨基酸序列预测蛋白质结构是自然科学中长期存在的重大挑战。在基于进化的算法中，AlphaFold2可以说是目前解决该问题最成功的。它通过在多序列输入、进化同源物对齐序列和可选结构模板上训练端到端神经网络，取得了突破性成就，大大加速了“生命元宇宙”的构建。而Meta团队的ESMFold蛋白质模型只需要一个序列作为输入，该模型背后的团队由Meta AI（原Facebook AI）的资深研究科学家Alexander Rives主导。该团队专注于大规模蛋白质序列和结构数据的无监督表示学习模型研究。Alexander本人同时也是Fate Therapeutics、Syros Pharma、Kallyope的联合创始人。
+
+DeepMind（Google旗下）的AlphaFold2在蛋白质结构预测大赛CASP 14中，对大部分蛋白质结构的预测与真实结构只差一个原子的宽度，达到接近冷冻电镜等复杂仪器检测的水平。ESMFold与AlphaFold2和RoseTTAFold对多序列输入的蛋白质结构预测具有相当的准确度。但ESMFold突出优势在于，其计算速度比AlphaFold2快一个数量级，能够在更有效的时间尺度上探索蛋白质的结构空间。
+过去，AlphaFold2和RoseTTAFold在原子分辨率蛋白质结构预测问题上取得了突破性成功，但依赖于使用多序列比对（Multiple Sequence Alignment，简写为MSA）和相似蛋白质结构的模板来实现最优表现。150亿参数大模型，10x倍速度提升。虽然Meta ESMFold精度上没能做到全面“碾压”AlphaFold2，但毕竟“唯快不破”.
+https://pics1.baidu.com/feed/91529822720e0cf3f09a84e3620a4015be09aa14.jpeg@f_auto?token=97bfe840f670c3b363d6e9b0af59d733![image](https://user-images.githubusercontent.com/80620580/205549408-7ef36273-9546-4c5a-9559-7da270abf466.png)
+
+
 
 #### 生命科学领域的主要人工智能模型及应用场景
 
