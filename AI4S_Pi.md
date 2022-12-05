@@ -126,6 +126,7 @@ AI即人工智能，归根结底就是用程序模拟人类，生物学本就是
 各种基于串联的无监督方法已用于聚类和关联分析。近年来基于矩阵分解的方法已经发展起来，联合NMF（non-negative  matrix factorisation）被提出来整合具有非负值的多组学数据。iCluster框架使用了类似于NMF的原理，但允许集成具有负值的数据集。iCluster+框架提供了对iCluster框架的重大改进，iCluster+ 框架可以以发现模式并结合一系列具有二元、分类和连续值的组学，并通过结合来自结肠直肠癌数据集的基因组数据得到证明。NMF的另一个适应性被评估为JIVE（Joint and Individual Variation Explained），它捕获了集成数据类型之间的联合变化和每种数据类型的结构变化以及残余噪声。MoCluster使用多区块多变量分析来突出不同输入组学数据的模式，然后找到其中的联合聚类。MoCluster通过整合蛋白质组学和转录组学数据进行验证，与Cluster和iCluster+相比，MoCluster显示出明显更高的聚类精度和更低的计算成本。LRAcluster被开发用于整合高维多组学数据。此外，还有最近提出的iClusterBayes，一种完全贝叶斯潜变量模型。它克服了iCluster+在统计推断和计算速度方面的局限性。
 
 - 基于模型的整合方法
+
 基于模型的整合方法为不同的组学数据创建多个中间模型，然后从各种中间模型构建最终模型。如上图基于模型的整合方法的一般流程为：第1阶段建立单独组的原始数据以及相应的表型信息。在第2阶段，为每个组学开发单独的模型，这些模型随后在第3阶段集成到联合模型中。在第4阶段中，对关节模型进行分析。基于模型的集成方法的主要优点是，它们可以用于合并基于不同组学类型的模型，其中每个模型是从具有相同疾病信息的不同患者组开发的。
 
 基于模型的监督学习方法包括用于开发模型的各种框架，如多数投票算法（majority-based voting）、分层分类器（hierarchical classifiers）、基于集成的方法如XGBoost 和KNN。基于模型的监督学习也采用了深度学习方法，例如MOLI、DFNForest框架、Chaudhary等。ATHENA（Analysis Tool for Heritable and Environmental Network Associations）被开发用于分析多组学数据，其使用grammatical evolution neural networks以及Biofilter和Random Jungl来研究不同的分类和定量变量，并开发预测模型。最近，还开发了用于泛癌分析的MOSAE。
@@ -133,6 +134,7 @@ AI即人工智能，归根结底就是用程序模拟人类，生物学本就是
 目前已经实现了各种基于模型的无监督学习方法。PSDF (Patient-Specific Data Fusion)是一种非参数贝叶斯模型，通过结合基因表达和拷贝数变异数据对预测癌症亚型进行聚类。类似地，CONEXIC还使用BN整合肿瘤样本的基因表达和拷贝数变化，以识别驱动突变。另一方面，诸如 FCA（(Formal Concept Analysis）共识聚类、MDI（Multiple Dataset Integration）、PINS（Perturbation clustering for data integration and  disease subtyping）、PINS+ 和 BCC（Bayesian consensus clustering）等聚类方法更加灵活，允许后期的聚类整合。不同的基于网络的方法也可用于关联分析，例如Lemon Tree和SNF(Similarity Network Fusion)等。
 
 - 基于转换的整合方法
+
 基于转换的整合方法首先将每个组学数据集转换为图形或核矩阵，然后在构建模型之前将所有数据集合并为一个。如上图基于转换的整合方法的一般流程为：第1阶段建立单独组的原始数据以及相应的表型信息。在第2阶段，为每个组学开发单独的转换（以图形或内核关系的形式），这些转换随后在第3阶段集成到联合转换中。最后，在第4阶段对其进行分析。基于转换的整合方法的主要优点是，如果唯一信息（例如患者 ID）可用，它们可用于组合广泛的组学研究。
 
 之前提出的基于转换的监督学习方法大多数是基于内核和基于图的算法，其中基于内核的算法有SDP-SVM (Semi-Definite Programming SVM)、FSMKL (Multiple Kernel Learning with Feature Selection)、RVM (Relevance Vector Machine)和Ada-boost RVM等。此外，fMKL-DR (fast multiple kernel learning for dimensionality reduction)已与SVM一起用于基因表达、miRNA表达和DNA甲基化数据。基于图的算法有SSL(semi-supervised learning )、graph sharpening、composite  network和BN等。总体而言，从文献中可以明显看出，基于内核的算法比基于图的方法具有更好的性能。最近，引入了MORONET(Multi-Omics gRaph cOnvolutional NETworks) ，它利用组学特征和患者之间的关联使用图卷积网络来获得更好的分类结果。
